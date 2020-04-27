@@ -3,12 +3,14 @@ const express = require('express');
 // this will automatically grab the index file from the given folder
 const routes = require('./routes');
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(routes);
+
+app.listen(PORT);
 
 // app.get('/api/todos', async (req, res) => {
 //   const query = 'SELECT * FROM todos;';
@@ -119,4 +121,4 @@ app.use(routes);
 
 // // route to get complete and incomplete
 
-app.listen(PORT);
+
