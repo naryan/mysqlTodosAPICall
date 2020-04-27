@@ -1,15 +1,14 @@
 const mysql = require('mysql2');
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'password',
-  database: 'todosDB',
-}).promise();
-
-connection.connect((err) => {
-  if (err) throw err;
-});
-
-
+let connection;
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL).promise();
+} else {
+  connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'todosDB',
+  }).promise();
+}
 module.exports = connection;
