@@ -11,17 +11,17 @@ module.exports = {
     }
   },
   addTodo: async (req, res) => {
-    const { text } = req.body;
-    if (!text) {
-      return res.json({ error: "You must enter a text" });
+    const { note } = req.body;
+    if (!note) {
+      return res.json({ error: 'You must enter a text' });
     }
     try {
       const [response] = await connection.query(todoQueries.addTodo, {
-        note: text,
+        note,
       });
       const [todos] = await connection.query(
         todoQueries.findTodoById,
-        response.insertId
+        response.insertId,
       );
       res.status(200).json(todos[0]);
     } catch (e) {
