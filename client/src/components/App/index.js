@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import Counter from '../containers/counter';
-import TodoForm from '../containers/todoForm';
+import Counter from '../../containers/counter';
+import TodoForm from '../../containers/todoForm';
 
 const App = () => {
   return (

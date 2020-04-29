@@ -6,9 +6,13 @@ const RenderTodoList = props => {
       return <h1>No todos yet</h1>;
     } else {
       return props.items.map(note => {
-        return <li 
-        key={note.id} 
-        style={{ color: note.completed ? 'blue' : 'red' }} >{note.note}</li>
+        return (
+        <div key={note.id} >
+          <li style={{ color: note.completed ? 'blue' : 'red' }}>{note.note}</li>
+          <button onClick= { () => props.handleDelete(note.id)}> Delete </button>
+          <button onClick = { () => props.handleUpdate(note.id)}>Update </button>
+        </div>
+        )
       });
     }
   }

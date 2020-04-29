@@ -47,4 +47,16 @@ module.exports = {
       res.status(403).json({ e });
     }
   },
+  updateTodoById: async (req, res) => {
+    const { id } = req.params;
+    try {
+      const [todos] = await connection.query(todoQueries.findTodoById, id);
+      const foundTodo = todos[0];
+      await connection.query(todoQueries.updateTodoById, [!foundTodo.completed, id]);
+      const [updatedTodos] = await connection.query(todoQueries.findAllTodos);
+      res.status(200).json(updatedTodos);
+    } catch (e) {
+      res.status(403).json({ e });
+    }
+  },
 };

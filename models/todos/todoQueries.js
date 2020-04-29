@@ -9,6 +9,8 @@ const deleteTodoById = 'delete from todos where id = ?;';
 
 const updateTodoNoteById = 'update todos set note = ? where id = ?;';
 
+const updateTodoById = 'update todos set completed = ? where id = ?;';
+
 module.exports = {
   findAllTodos,
   findAllCompleted,
@@ -17,4 +19,5 @@ module.exports = {
   addTodo,
   deleteTodoById,
   updateTodoNoteById,
+  updateTodoById,
 };
