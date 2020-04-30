@@ -42,10 +42,9 @@ class TodoForm extends Component {
       console.log(e);
     }
   }
-  handleUpdate = async id => {
+  handleUpdateCompleted = async id => {
     try{
       const {data} = await axios.patch(`/api/todos/${id}`);
-      console.log({data});
       this.setState({todos:data});
     }
     catch(e){
@@ -54,12 +53,13 @@ class TodoForm extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <RenderTodoList 
         items={this.state.todos}
         handleDelete = {this.handleDelete}
-        handleUpdate = {this.handleUpdate}/>
+        handleUpdateCompleted = {this.handleUpdateCompleted}/>
         <form>
           <input
             name="todoInput"

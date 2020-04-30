@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 const RenderTodoList = props => {
   const renderTodoListItems = () => {
@@ -8,9 +10,9 @@ const RenderTodoList = props => {
       return props.items.map(note => {
         return (
         <div key={note.id} >
-          <li style={{ color: note.completed ? 'blue' : 'red' }}>{note.note}</li>
+          <Link to={`/todos/${note.id}`}><li style={{ color: note.completed ? 'blue' : 'red' }} >{note.note}</li></Link>
           <button onClick= { () => props.handleDelete(note.id)}> Delete </button>
-          <button onClick = { () => props.handleUpdate(note.id)}>Update </button>
+          <button onClick = { () => props.handleUpdateCompleted(note.id)}>Update </button>
         </div>
         )
       });

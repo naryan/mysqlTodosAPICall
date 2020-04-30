@@ -1,14 +1,20 @@
 import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
+
+import Navbar from '../Navbar';
 import Counter from '../../containers/counter';
 import TodoForm from '../../containers/todoForm';
+import TodoCard from '../../containers/todoCard';
 
 const App = () => {
   return (
-    <>
-      <Counter/>
-      <TodoForm/>
-    </>
+  <Router>
+    <Navbar/>
+    <Route exact path = '/counter' component ={Counter}/>
+    <Route exact path = '/todos' component ={TodoForm}/>
+    <Route exact path = '/todos/:todoId' component ={TodoCard}/>
+  </Router>
   );
 };
 export default App;

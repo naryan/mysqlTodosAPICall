@@ -9,6 +9,6 @@ router.route('/')
 router.route('/:id')
   .get(todosController.getTodoById)
   .delete(todosController.deleteTodoById)
-  .patch(todosController.updateTodoById);
+  .patch(todosController.updateTodoCompletedById);
 
 module.exports = router;
